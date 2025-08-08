@@ -26,8 +26,8 @@
             <td>{{ $curso->nombre }}</td>
             <td>{{ $curso->descripcion }}</td>
             <td>
-                <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-sm btn-warning">Editar</a>
-                <form action="{{ route('cursos.destroy', $curso) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro querés borrar este curso?');">
+                <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro querés borrar este curso?');">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-sm btn-danger">Borrar</button>

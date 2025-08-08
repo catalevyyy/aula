@@ -38,4 +38,40 @@ class CursoController extends Controller
         // Redirigir a la lista de cursos con un mensaje de éxito
         return redirect('/cursos')->with('success', 'Curso creado correctamente');
     }
+
+    // Mostrar el formulario para editar un curso existente
+    public function edit($id)
+    {
+        $curso = Curso::findOrFail($id);
+        return view('cursos.edit', compact('curso'));
+    }
+
+    // Actualizar un curso en la base de datos
+    public function update(Request $request, $id)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'nombre' => 'required|max:255',
+            'descripcion' => 'nullable',
+        ]);
+
+        // Buscar el curso y actualizarlo
+        $curso = Curso::findOrFail($id);
+        $curso->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+        ]);
+
+        // Redirigir con mensaje de éxito
+        return redirect('/cursos')->with('success', 'Curso actualizado correctamente');
+    }
+
+    // Eliminar un curso de la base de datos
+    public function destroy($id)
+    {
+        $curso = Curso::findOrFail($id);
+        $curso->delete();
+
+        return redirect('/cursos')->with('success', 'Curso eliminado correctamente');
+    }
 }

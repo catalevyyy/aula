@@ -76,6 +76,7 @@
       align-items: center;
       gap: 0.6rem;
       transition: background-color 0.3s ease, color 0.3s ease;
+      text-decoration: none;
     }
 
     .nav-pills .nav-link:hover,
@@ -150,4 +151,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
 
